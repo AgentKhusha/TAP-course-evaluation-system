@@ -1,0 +1,63 @@
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats {
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.courses-section h3 {
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.course-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-meta {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.course-meta span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.course-actions {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.evaluated-badge {
+  background-color: var(--success-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+}

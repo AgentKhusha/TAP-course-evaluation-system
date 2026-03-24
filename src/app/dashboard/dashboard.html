@@ -1,0 +1,43 @@
+<div class="dashboard">
+  <h2>Course Evaluation Dashboard</h2>
+
+  <div class="stats grid grid-3">
+    <div class="card stat-card">
+      <div class="stat-number">{{ stats().totalCourses }}</div>
+      <div class="stat-label">Total Courses</div>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-number">{{ stats().evaluatedCourses }}</div>
+      <div class="stat-label">Evaluated</div>
+    </div>
+    <div class="card stat-card">
+      <div class="stat-number">{{ stats().pendingEvaluations }}</div>
+      <div class="stat-label">Pending</div>
+    </div>
+  </div>
+
+  <div class="courses-section">
+    <h3>Courses</h3>
+    <div class="courses grid grid-2">
+      @for (course of courses(); track course.id) {
+        <div class="card course-card">
+          <div class="card-header">{{ course.title }}</div>
+          <div class="card-body">
+            <p>{{ course.description }}</p>
+            <div class="course-meta">
+              <span><strong>Instructor:</strong> {{ course.instructor }}</span>
+              <span><strong>Duration:</strong> {{ course.duration }}</span>
+            </div>
+            <div class="course-actions">
+              @if (course.evaluated) {
+                <span class="evaluated-badge">Evaluated</span>
+              } @else {
+                <a routerLink="/evaluate/{{ course.id }}" class="btn btn-primary">Evaluate Course</a>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="evaluate">
+  <h2>Evaluate Course: {{ courseTitle() }}</h2>
+
+  <form class="evaluation-form" (ngSubmit)="submitEvaluation()">
+    <div class="form-section">
+      <h3>1. Ratings</h3>
+
+      <div class="rating-group">
+        <label class="form-label">Course Content Quality</label>
+        <div class="rating-stars">
+          @for (star of [1,2,3,4,5]; track star) {
+            <span
+              class="star"
+              [class.active]="evaluation().contentQuality >= star"
+              (click)="onRatingChange('contentQuality', star)">
+              ★
+            </span>
+          }
+        </div>
+      </div>
+
+      <div class="rating-group">
+        <label class="form-label">Instructor Effectiveness</label>
+        <div class="rating-stars">
+          @for (star of [1,2,3,4,5]; track star) {
+            <span
+              class="star"
+              [class.active]="evaluation().instructorEffectiveness >= star"
+              (click)="onRatingChange('instructorEffectiveness', star)">
+              ★
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>2. Course Difficulty</h3>
+      <div class="form-group radio-group">
+        <label>
+          <input type="radio" name="difficulty" value="Too Easy" [(ngModel)]="evaluation().difficulty"> Too Easy
+        </label>
+        <label>
+          <input type="radio" name="difficulty" value="Just Right" [(ngModel)]="evaluation().difficulty"> Just Right
+        </label>
+        <label>
+          <input type="radio" name="difficulty" value="Too Hard" [(ngModel)]="evaluation().difficulty"> Too Hard
+        </label>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>3. Detailed Feedback</h3>
+      <div class="form-group">
+        <label class="form-label" for="enjoyedMost">What did you enjoy most?</label>
+        <textarea id="enjoyedMost" class="form-control" [(ngModel)]="evaluation().enjoyedMost" name="enjoyedMost" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="suggestions">How can we improve this course?</label>
+        <textarea id="suggestions" class="form-control" [(ngModel)]="evaluation().suggestions" name="suggestions" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>4. Recommendation</h3>
+      <label class="form-label">Would you recommend this course to others?</label>
+      <div class="form-group radio-group">
+        <label>
+          <input type="radio" name="recommend" [value]="true" [(ngModel)]="evaluation().wouldRecommend"> Yes
+        </label>
+        <label>
+          <input type="radio" name="recommend" [value]="false" [(ngModel)]="evaluation().wouldRecommend"> No
+        </label>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="!evaluation().contentQuality || !evaluation().instructorEffectiveness || !evaluation().difficulty || evaluation().wouldRecommend === null">Submit Evaluation</button>
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
